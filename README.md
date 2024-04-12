@@ -1,5 +1,4 @@
 
-//Objeto Json para actualizar
 {
   "humedadDeseada": "string1",
   "temperaturaDeseada": "string1",
