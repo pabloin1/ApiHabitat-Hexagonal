@@ -6,15 +6,17 @@ export class UpdateHabitatController {
 
   async run(req: Request, res: Response) {
     const { id } = req.params; // Suponiendo que el id está en los parámetros de la solicitud
-    const { humedadDeseada, temperaturaDeseada, movimiento, idMonitoreo } = req.body;
+    const { humedadDeseada, temperaturaDeseada, movimiento, idMonitoreo, nombre, horaNotificar } = req.body;
     
     try {
       const habitat = await this.updateHabitatUseCase.run(
         parseInt(id), // Convertir id a número
+        nombre,
         humedadDeseada,
         temperaturaDeseada,
         movimiento,
-        idMonitoreo
+        idMonitoreo,
+        horaNotificar
       );
 
       if (habitat) {

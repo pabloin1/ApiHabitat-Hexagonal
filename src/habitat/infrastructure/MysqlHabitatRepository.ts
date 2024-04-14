@@ -13,10 +13,12 @@ export class MysqlHabitatRepository implements HabitatRepository {
         (habitat: any) =>
           new Habitat(
             habitat.id,
+            habitat.nombre,
             habitat.humedadDeseada,
             habitat.temperaturaDeseada,
             habitat.movimiento,
-            habitat.idMonitoreo
+            habitat.idMonitoreo,
+            habitat.horaNotificar
           )
       );
     } catch (error) {
@@ -34,10 +36,12 @@ export class MysqlHabitatRepository implements HabitatRepository {
             estar dentro de un bloque try/catch si hay error se captura en el catch */
       return new Habitat(
         result[0].id,
+        result[0].nombre,
         result[0].humedadDeseada,
         result[0].temperaturaDeseada,
         result[0].movimiento,
-        result[0].idMonitoreo
+        result[0].idMonitoreo,
+        result[0].horaNotificar
       );
     } catch (error) {
       return null;
@@ -45,18 +49,22 @@ export class MysqlHabitatRepository implements HabitatRepository {
   }
 
   async createHabitat(
+    nombre:string,
     humedadDeseada: string,
     temperaturaDeseada: string,
     movimiento: string,
-    idMonitoreo: number
+    idMonitoreo: number,
+    horaNotificar:string
   ): Promise<Habitat | null> {
     const sql =
-      "INSERT INTO habitat (humedadDeseada, temperaturaDeseada, movimiento,idMonitoreo) VALUES (?,?,?,?)";
+      "INSERT INTO habitat (nombre,humedadDeseada, temperaturaDeseada, movimiento,idMonitoreo,horaNotificar) VALUES (?,?,?,?,?,?)";
     const params: any[] = [
+      nombre,
       humedadDeseada,
       temperaturaDeseada,
       movimiento,
       idMonitoreo,
+      horaNotificar
     ];
 
     try {
@@ -66,10 +74,12 @@ export class MysqlHabitatRepository implements HabitatRepository {
             estar dentro de un bloque try/catch si hay error se captura en el catch */
       return new Habitat(
         result.insertId,
+        nombre,
         humedadDeseada,
         temperaturaDeseada,
         movimiento,
-        idMonitoreo
+        idMonitoreo,
+        horaNotificar
       );
     } catch (error) {
       return null;
@@ -86,10 +96,12 @@ export class MysqlHabitatRepository implements HabitatRepository {
             estar dentro de un bloque try/catch si hay error se captura en el catch */
       return new Habitat(
         habitatId,
+        result.nombre,
         result.humedadDeseada,
         result.temperaturaDeseada,
         result.movimiento,
-        result.idMonitoreo
+        result.idMonitoreo,
+        result.horaNotificar
       );
     } catch (error) {
       return null;
@@ -98,18 +110,22 @@ export class MysqlHabitatRepository implements HabitatRepository {
 
   async updateHabitat(
     id: number,
+    nombre:string,
     humedadDeseada: string,
     temperaturaDeseada: string,
     movimiento: string,
-    idMonitoreo: number
+    idMonitoreo: number,
+    horaNotificar:string
   ): Promise<Habitat | null> {
     const sql =
-      "UPDATE habitat SET humedadDeseada=?, temperaturaDeseada=?, movimiento=?, idMonitoreo=? WHERE id=?";
+      "UPDATE habitat SET nombre=?, humedadDeseada=?, temperaturaDeseada=?, movimiento=?, idMonitoreo=?, horaNotificar=? WHERE id=?";
     const params: any[] = [
+      nombre,
       humedadDeseada,
       temperaturaDeseada,
       movimiento,
       idMonitoreo,
+      horaNotificar,
       id,
     ];
     try {
@@ -119,10 +135,12 @@ export class MysqlHabitatRepository implements HabitatRepository {
             estar dentro de un bloque try/catch si hay error se captura en el catch */
       return new Habitat(
         id,
+        nombre,
         humedadDeseada,
         temperaturaDeseada,
         movimiento,
-        idMonitoreo
+        idMonitoreo,
+        horaNotificar
       );
     } catch (error) {
       return null;

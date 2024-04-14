@@ -8,10 +8,12 @@ export class CreateHabitatController {
     const data = req.body;
     try {
       const habitat = await this.createHabitatUseCase.run(
+        data.nombre,
         data.humedadDeseada,
         data.temperaturaDeseada,
         data.movimiento,
         data.idMonitoreo,
+        data.horaNotificar
       );
 
       if (habitat) {
