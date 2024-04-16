@@ -13,12 +13,12 @@ export class MysqlHabitatRepository implements HabitatRepository {
         (habitat: any) =>
           new Habitat(
             habitat.id,
+            habitat.id_user,
             habitat.name,
             habitat.humedity,
             habitat.temperature,
             habitat.interval_review,
-            habitat.id_user,
-            habitat.created_at
+            habitat.Created_at
           )
       );
     } catch (error) {
@@ -62,7 +62,7 @@ export class MysqlHabitatRepository implements HabitatRepository {
         interval_review,
         temperature,
         humedity,
-        created_at) VALUES (?,?,?,?,?,?)`;
+        Created_at) VALUES (?,?,?,?,?,?)`;
     const params: any[] = [
       id_user,
       name,
