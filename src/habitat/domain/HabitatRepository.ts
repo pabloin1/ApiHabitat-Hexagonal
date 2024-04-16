@@ -6,23 +6,23 @@ export interface HabitatRepository {
   getById(habitatId: number): Promise<Habitat | null>;
   
   createHabitat(
-    nombre:string,
-    humedadDeseada: string,
-    temperaturaDeseada: string,
-    movimiento: string,
-    idMonitoreo: number,
-    horaNotificar:string
+     id_user: number,
+     name: string,
+     interval_review: string,
+     temperature: string,
+     humedity: string,
+     created_at:string
   ): Promise<Habitat | null>;
 
   deleteHabitat(habitatId: number): Promise<Habitat | null>;
 
   updateHabitat(
     id:number,
-    nombre:string,
-    humedadDeseada: string,
-    temperaturaDeseada: string,
-    movimiento: string,
-    idMonitoreo: number,
-    horaNotificar:string
+    id_user: number,
+    name: string,
+    interval_review: string,
+    temperature: string,
+    humedity: string,
+    created_at: string
   ): Promise<Habitat | null>;
 }

@@ -2,27 +2,28 @@ import { Habitat } from "../domain/Habitat";
 import { HabitatRepository } from "../domain/HabitatRepository";
 
 
+
 export class UpdateHabitatUseCase {
   constructor(readonly HabitatRepository: HabitatRepository) {}
 
   async run(
     id:number,
-    nombre: string,
-    humedadDeseada: string,
-    temperaturaDeseada: string,
-    movimiento: string,
-    idMonitoreo: number,
-    horaNotificar:string
+    id_user: number,
+    name: string,
+    interval_review: string,
+    temperature: string,
+    humedity: string,
+    created_at: string
   ): Promise<Habitat | null> {
     try {
       const user = await this.HabitatRepository.updateHabitat(
         id,
-        nombre,
-        humedadDeseada,
-        temperaturaDeseada,
-        movimiento,
-        idMonitoreo,
-        horaNotificar
+        id_user,
+        name,
+        interval_review,
+        temperature,
+        humedity,
+        created_at
       );
       return user;
     } catch (error) {

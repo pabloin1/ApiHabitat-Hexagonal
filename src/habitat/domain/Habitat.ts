@@ -1,11 +1,11 @@
 export class Habitat {
   constructor(
     readonly id: number,
-    readonly nombre: string,
-    readonly humedadDeseada: string,
-    readonly temperaturaDeseada: string,
-    readonly movimiento: string,
-    readonly idMonitoreo: number,
-    readonly horaNotificar:string
+    readonly id_user: number,
+    readonly name: string,
+    readonly interval_review: string,
+    readonly temperature: string,
+    readonly humedity: string,
+    readonly created_at:string
   ) {}
 }
