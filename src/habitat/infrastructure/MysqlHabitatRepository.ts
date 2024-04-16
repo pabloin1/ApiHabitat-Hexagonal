@@ -36,11 +36,11 @@ export class MysqlHabitatRepository implements HabitatRepository {
             estar dentro de un bloque try/catch si hay error se captura en el catch */
       return new Habitat(
         result[0].id,
+        result[0].id_user,
         result[0].name,
         result[0].humedity,
         result[0].temperature,
         result[0].interval_review,
-        result[0].id_user,
         result[0].created_at
       );
     } catch (error) {
