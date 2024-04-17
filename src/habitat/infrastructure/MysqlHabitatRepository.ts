@@ -15,10 +15,10 @@ export class MysqlHabitatRepository implements HabitatRepository {
             habitat.id,
             habitat.id_user,
             habitat.name,
-            habitat.humedity,
-            habitat.temperature,
             habitat.interval_review,
-            habitat.Created_at
+            habitat.temperature,
+            habitat.humidity,
+            habitat.created_at
           )
       );
     } catch (error) {
@@ -38,9 +38,9 @@ export class MysqlHabitatRepository implements HabitatRepository {
         result[0].id,
         result[0].id_user,
         result[0].name,
-        result[0].humedity,
-        result[0].temperature,
         result[0].interval_review,
+        result[0].temperature,
+        result[0].humidity,
         result[0].created_at
       );
     } catch (error) {
@@ -61,15 +61,15 @@ export class MysqlHabitatRepository implements HabitatRepository {
         name,
         interval_review,
         temperature,
-        humedity,
-        Created_at) VALUES (?,?,?,?,?,?)`;
+        humidity,
+        created_at) VALUES (?,?,?,?,?,?)`;
     const params: any[] = [
       id_user,
       name,
       interval_review,
       temperature,
       humedity,
-      created_at,
+      created_at
     ];
 
     try {
@@ -101,11 +101,11 @@ export class MysqlHabitatRepository implements HabitatRepository {
             estar dentro de un bloque try/catch si hay error se captura en el catch */
       return new Habitat(
         result.id,
-        result.name,
-        result.humedity,
-        result.temperature,
-        result.interval_review,
         result.id_user,
+        result.name,
+        result.interval_review,
+        result.temperature,
+        result.humedity,
         result.created_at
       );
     } catch (error) {
@@ -123,7 +123,7 @@ export class MysqlHabitatRepository implements HabitatRepository {
     created_at: string
   ): Promise<Habitat | null> {
     const sql =
-      "UPDATE habitats SET id_user=?, name=?, interval_review=?, temperature=?, humedity=?, created_at=? WHERE id=?";
+      "UPDATE habitats SET id_user=?, name=?, interval_review=?, temperature=?, humidity=?, created_at=? WHERE id=?";
     const params: any[] = [
       id_user,
       name,
