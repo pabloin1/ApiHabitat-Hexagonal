@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateHabitatController = exports.deleteHabitatController = exports.getByIdHabitatController = exports.getAllHabitatController = exports.createHabitatController = exports.updateHabitatUseCase = exports.deleteUserHabitatCase = exports.getByIdHabitatUseCase = exports.getAllHabitatCase = exports.createHabitatUseCase = exports.mysqlHabitatRepository = void 0;
+const CreateHabitatUseCase_1 = require("../application/CreateHabitatUseCase");
+const DeleteHabitatUseCase_1 = require("../application/DeleteHabitatUseCase");
+const GetAllHabitatUseCase_1 = require("../application/GetAllHabitatUseCase");
+const GetByIdHabitatUseCase_1 = require("../application/GetByIdHabitatUseCase");
+const UpdateHabitatUseCase_1 = require("../application/UpdateHabitatUseCase");
+const CreateHabitatController_1 = require("./controllers/CreateHabitatController");
+const DeleteHabitatController_1 = require("./controllers/DeleteHabitatController");
+const GetAllHabitatController_1 = require("./controllers/GetAllHabitatController");
+const GetByIdHabitatController_1 = require("./controllers/GetByIdHabitatController");
+const UpdateHabitatController_1 = require("./controllers/UpdateHabitatController");
+const MysqlHabitatRepository_1 = require("./MysqlHabitatRepository");
+exports.mysqlHabitatRepository = new MysqlHabitatRepository_1.MysqlHabitatRepository();
+exports.createHabitatUseCase = new CreateHabitatUseCase_1.CreateHabitatUseCase(exports.mysqlHabitatRepository);
+exports.getAllHabitatCase = new GetAllHabitatUseCase_1.GetAllHabitatUseCase(exports.mysqlHabitatRepository);
+exports.getByIdHabitatUseCase = new GetByIdHabitatUseCase_1.GetByIdHabitatUseCase(exports.mysqlHabitatRepository);
+exports.deleteUserHabitatCase = new DeleteHabitatUseCase_1.DeleteHabitatUseCase(exports.mysqlHabitatRepository);
+exports.updateHabitatUseCase = new UpdateHabitatUseCase_1.UpdateHabitatUseCase(exports.mysqlHabitatRepository);
+//----------------------------------------------------------------------------------------------
+exports.createHabitatController = new CreateHabitatController_1.CreateHabitatController(exports.createHabitatUseCase);
+exports.getAllHabitatController = new GetAllHabitatController_1.GetAllHabitatController(exports.getAllHabitatCase);
+exports.getByIdHabitatController = new GetByIdHabitatController_1.GetByIdHabitatController(exports.getByIdHabitatUseCase);
+exports.deleteHabitatController = new DeleteHabitatController_1.DeleteHabitatController(exports.deleteUserHabitatCase);
+exports.updateHabitatController = new UpdateHabitatController_1.UpdateHabitatController(exports.updateHabitatUseCase);
